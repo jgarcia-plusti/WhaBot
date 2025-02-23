@@ -66,6 +66,14 @@ const flowRenovacion = addKeyword(['renovacion', 'renovar'])
         'Agregar un servicio'
     ]);
 
+const Error = addKeyword(['error', 'errores', 'problema', 'problemas', 'falla', 'fallas', 'no funciona', 'no sirve', 
+    'no puedo', 'no puedo ingresar', 'no puedo acceder', 'no puedo ver'])
+    .addAnswer([
+        '🚨 ¡Lo siento! Parece que tienes un problema con tu servicio 🚨',
+        '',
+        'Por favor, indícame cuál es el problema que tienes para poder ayudarte. 🤖',
+    ]);
+
 const flowPrincipal = addKeyword(['hola', 'ola', 'buenas tardes', 'buenos dias', 'buenas noches', 'buenas'])
     .addAnswer([
         '👋 Hola, te saluda LyJ tu asistente virtual! 🎉',
@@ -80,7 +88,7 @@ const flowPrincipal = addKeyword(['hola', 'ola', 'buenas tardes', 'buenos dias',
 
 const main = async () => {
     const adapterDB = new MockAdapter();
-    const adapterFlow = createFlow([flowPrincipal, flowRenovacion, Netflix, Disney, ServicesTw, IpTv, ServicesTr]);
+    const adapterFlow = createFlow([flowPrincipal, Error]);
     const adapterProvider = createProvider(BaileysProvider);
 
     createBot({
