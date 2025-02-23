@@ -74,6 +74,13 @@ const Error = addKeyword(['error', 'errores', 'problema', 'problemas', 'falla', 
         'Por favor, indícame cuál es el problema que tienes para poder ayudarte. 🤖',
     ]);
 
+const NewService = addKeyword(['servicio nuevo', 'nuevo servicio', 'agregar servicio', 'servicio adicional', 'servicio extra', 'nuevo'])
+    .addAnswer([
+        '🎉 ¡Claro! Te puedo ayudar con eso 📱',
+        '',
+        '¿Qué servicio deseas agregar a tu plan actual? 🤖',
+    ]);
+
 const flowPrincipal = addKeyword(['hola', 'ola', 'buenas tardes', 'buenos dias', 'buenas noches', 'buenas'])
     .addAnswer([
         '👋 Hola, te saluda LyJ tu asistente virtual! 🎉',
@@ -88,7 +95,7 @@ const flowPrincipal = addKeyword(['hola', 'ola', 'buenas tardes', 'buenos dias',
 
 const main = async () => {
     const adapterDB = new MockAdapter();
-    const adapterFlow = createFlow([flowPrincipal, Error]);
+    const adapterFlow = createFlow([flowPrincipal, Error, NewService]);
     const adapterProvider = createProvider(BaileysProvider);
 
     createBot({
