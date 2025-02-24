@@ -3,6 +3,25 @@ const QRPortalWeb = require('@bot-whatsapp/portal');
 const BaileysProvider = require('@bot-whatsapp/provider/baileys');
 const MockAdapter = require('@bot-whatsapp/database/mock');
 
+const Catalogs = addKeyword(['catalogo', 'catalogos', 'catalogo de servicios', 'catalogo de servicio', 
+    'catalogo de productos', 'catalogo de producto', 'catalogo de planes', 'catalogo de plan', 'Productos', 'productos', 'servicios', 'servicio'])
+    .addAnswer([
+        'Estos son los servicios que tenemos disponibles para ti:',
+        '1. Netflix',
+        '2. Disney+',
+        '3. Prime Video',
+        '4. HBO Max',
+        '5. Spotify',
+        '6. YouTube Premium',
+        '7. Crunchyroll',
+        '8. Paramount+',
+        '9. Deezer',
+        '10. Vix',
+        '11. IPTV',
+        '',
+        '¿En qué más puedo ayudarte? 🤖',
+    ]);
+
 const Payment = addKeyword(['pago', 'pagar', 'pagos', 'paguar', 'paga', 'pago de servicio', 'pagar servicio', 'pagos de servicio', 'paguar servicio', 'paga servicio'])
     .addAnswer([
         'Muchas gracias por confiar en nuestro servicio',
@@ -12,19 +31,19 @@ const Payment = addKeyword(['pago', 'pagar', 'pagos', 'paguar', 'paga', 'pago de
         'a los numero de cuenta:',
         '1. Ahorro - Banrural - 04103000336503 - Angel García',
         '2. Ahorro - B. Industrial - 1229311 - Angel García',
-    ]);
+    ], null, null, [Catalogs]);
 
 const Accounts = addKeyword(['cuentas', 'cuenta', 'numero de cuenta', 'numero de cuentas', 'cuentas bancarias', 'cuenta bancaria', 'cuentas de banco', 'cuenta de banco'])
     .addAnswer([
         'Contamos con cuentas en Banrural y Banco Industrial',
         'Estamos trabajando para agregar mas bancos a nuestra lista de pagos',
-    ], null, null, [Payment]);
+    ], null, null, [Payment, Catalogs]);
 
 const Bancs = addKeyword(['banco', 'bancos', 'que bancos', 'que banco', 'banco aceptado', 'banco aceptados', 'banco acepta', 'banco aceptan'])
     .addAnswer([
         'Por el momento aceptamos pagos en Banrural y Banco Industrial',
         'pronto agreagaremos mas bancos a nuestra lista de pagos',
-    ], null, null, [Payment, Accounts]);
+    ], null, null, [Payment, Accounts, Catalogs]);
 
 const Netflix = addKeyword(['netflix', 'net', 'netfli', 'nesflix'])
     .addAnswer([
@@ -34,7 +53,7 @@ const Netflix = addKeyword(['netflix', 'net', 'netfli', 'nesflix'])
         'Plan Básico','Tiene un costo de Q35 mensuales para un perfil individual.',
         '',
         'Promoción especial: Paga 3 meses por tan solo **Q90**.',
-    ], null, null, [Payment, Accounts, Bancs]);
+    ], null, null, [Payment, Accounts, Bancs, Catalogs]);
 
 const Disney = addKeyword(['disney', 'dis', 'disney+', 'disneyplus', 'disney plus', 'disnei'])
     .addAnswer([
@@ -43,7 +62,7 @@ const Disney = addKeyword(['disney', 'dis', 'disney+', 'disneyplus', 'disney plu
         'Tiene un costo de Q30 mensuales para un perfil individual.',
         '',
         'Promoción especial: Paga 3 meses por tan solo **Q75**.',
-    ], null, null, [Payment, Accounts, Bancs]);
+    ], null, null, [Payment, Accounts, Bancs, Catalogs]);
 
 const ServicesTw = addKeyword(['prime', 'primevideo', 'prime video', 
     'paramount', 'paramount +', 'paramountplus', 'paramount plus', 
@@ -55,7 +74,7 @@ const ServicesTw = addKeyword(['prime', 'primevideo', 'prime video',
         'Tiene un costo de Q20 mensuales para un perfil individual.',
         '',
         'Promoción especial: Paga 3 meses por tan solo **Q50**.',
-    ], null, null, [Payment, Accounts, Bancs]);
+    ], null, null, [Payment, Accounts, Bancs, Catalogs]);
 
 const ServicesTr = addKeyword(['spotify', 'spoti', 'spoty', 'spotifai', 'spotyfai', 'spotyfy', 'spotyfy', 'spotyfay', 'spotyfay',
     'youtube music', 'youtubemusic', 'youtubemusik', 'youtubemusica', 'youtubemusica', 'youtubemusik', 'youtubemusik'])
@@ -65,7 +84,7 @@ const ServicesTr = addKeyword(['spotify', 'spoti', 'spoty', 'spotifai', 'spotyfa
         'Tiene un costo de Q40 mensuales para un perfil individual.',
         '',
         'Promoción especial: Paga 3 meses por tan solo **Q105**.',
-    ], null, null, [Payment, Accounts, Bancs]);
+    ], null, null, [Payment, Accounts, Bancs, Catalogs]);
 
 const IpTv = addKeyword(['Ip tv', 'iptv', 'ipt', 'ip', 'tv', 'tvip', 'tv ip', 'tv iptv'])
     .addAnswer([
@@ -76,14 +95,14 @@ const IpTv = addKeyword(['Ip tv', 'iptv', 'ipt', 'ip', 'tv', 'tvip', 'tv ip', 't
         'Promoción especial: Paga 3 meses por tan solo **Q105**.',
         '',
         'Super Promocion: Paga 6 meses por tan solo **Q180**.'
-    ], null, null, [Payment, Accounts, Bancs]);
+    ], null, null, [Payment, Accounts, Bancs, Catalogs]);
 
 const NewService = addKeyword(['servicio nuevo', 'nuevo servicio', 'agregar servicio', 'servicio adicional', 'servicio extra', 'nuevo'])
     .addAnswer([
         '🎉 ¡Claro! Te puedo ayudar con eso 📱',
         '',
         '¿Qué servicio deseas agregar a tu plan actual? 🤖',
-    ], null, null, [Payment, Accounts, Bancs, Netflix, Disney, ServicesTw, IpTv, ServicesTr]);
+    ], null, null, [Payment, Accounts, Bancs, Catalogs, Netflix, Disney, ServicesTw, IpTv, ServicesTr]);
 
 const flowRenovacion = addKeyword(['renovacion', 'renovar'])
     .addAnswer([
@@ -92,7 +111,7 @@ const flowRenovacion = addKeyword(['renovacion', 'renovar'])
     .addAnswer([
         'Renovar el mismo',
         'Agregar un servicio'
-    ], null, null, [Payment, Accounts, Bancs, NewService]);
+    ], null, null, [Payment, Accounts, Bancs, Catalogs, NewService]);
 
 const Error = addKeyword(['error', 'errores', 'problema', 'problemas', 'falla', 'fallas', 'no funciona', 'no sirve', 
     'no puedo', 'no puedo ingresar', 'no puedo acceder', 'no puedo ver'])
@@ -108,9 +127,9 @@ const Adquirir = addKeyword(['adquirir', 'comprar', 'compra', 'adquirir servicio
         '¡Claro! Te puedo ayudar 📱',
         '',
         '¿Qué servicio deseas adquirir? 🤖',
-    ], null, null, [Payment, Accounts, Bancs, Netflix, Disney, ServicesTw, IpTv, ServicesTr, Error]);
+    ], null, null, [Payment, Accounts, Bancs, Catalogs, Netflix, Disney, ServicesTw, IpTv, ServicesTr, Error]);
 
-const flowPrincipal = addKeyword(['hola', 'ola', 'buenas tardes', 'buenos dias', 'buenas noches', 'buenas'])
+const flowPrincipal = addKeyword(['hola', 'ola', 'buenas tardes', 'buenos dias', 'buenas noches', 'buenas', 'hi', 'hello'])
     .addAnswer([
         '👋 Hola, te saluda LyJ tu asistente virtual! 🎉',
         '',
@@ -120,11 +139,11 @@ const flowPrincipal = addKeyword(['hola', 'ola', 'buenas tardes', 'buenos dias',
         'Servicio Nuevo',
         'Soporte Tecnico',
         ''
-    ], null, null, [ Adquirir, Error, NewService, flowRenovacion, Netflix, Disney, ServicesTw, IpTv, ServicesTr, Payment, Accounts, Bancs]);
+    ], null, null, [Catalogs, Adquirir, Error, NewService, flowRenovacion, Netflix, Disney, ServicesTw, IpTv, ServicesTr, Payment, Accounts, Bancs]);
 
 const main = async () => {
     const adapterDB = new MockAdapter();
-    const adapterFlow = createFlow([flowPrincipal, Error, Adquirir,NewService, flowRenovacion, Netflix, Disney, ServicesTw, IpTv, ServicesTr, Payment, Accounts, Bancs]);
+    const adapterFlow = createFlow([Catalogs, flowPrincipal, Error, Adquirir,NewService, flowRenovacion, Netflix, Disney, ServicesTw, IpTv, ServicesTr, Payment, Accounts, Bancs]);
     const adapterProvider = createProvider(BaileysProvider);
 
     createBot({
