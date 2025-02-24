@@ -12,7 +12,7 @@ const Netflix = addKeyword(['netflix', 'net', 'netfli', 'nesflix'])
         'Plan Básico','Tiene un costo de Q35 mensuales para un perfil individual.',
         '',
         'Promoción especial: Paga 3 meses por tan solo **Q90**.',
-    ]);
+    ], null, null, [Payment, Accounts, Bancs]);
 
 const Disney = addKeyword(['disney', 'dis', 'disney+', 'disneyplus', 'disney plus', 'disnei'])
     .addAnswer([
@@ -21,7 +21,7 @@ const Disney = addKeyword(['disney', 'dis', 'disney+', 'disneyplus', 'disney plu
         'Tiene un costo de Q30 mensuales para un perfil individual.',
         '',
         'Promoción especial: Paga 3 meses por tan solo **Q75**.',
-    ]);
+    ], null, null, [Payment, Accounts, Bancs]);
 
 const ServicesTw = addKeyword(['prime', 'primevideo', 'prime video', 
     'paramount', 'paramount +', 'paramountplus', 'paramount plus', 
@@ -33,7 +33,7 @@ const ServicesTw = addKeyword(['prime', 'primevideo', 'prime video',
         'Tiene un costo de Q20 mensuales para un perfil individual.',
         '',
         'Promoción especial: Paga 3 meses por tan solo **Q50**.',
-    ]);
+    ], null, null, [Payment, Accounts, Bancs]);
 
 
 const ServicesTr = addKeyword(['spotify', 'spoti', 'spoty', 'spotifai', 'spotyfai', 'spotyfy', 'spotyfy', 'spotyfay', 'spotyfay',
@@ -44,7 +44,7 @@ const ServicesTr = addKeyword(['spotify', 'spoti', 'spoty', 'spotifai', 'spotyfa
         'Tiene un costo de Q40 mensuales para un perfil individual.',
         '',
         'Promoción especial: Paga 3 meses por tan solo **Q105**.',
-    ]);
+    ], null, null, [Payment, Accounts, Bancs]);
 
 const IpTv = addKeyword(['Ip tv', 'iptv', 'ipt', 'ip', 'tv', 'tvip', 'tv ip', 'tv iptv'])
     .addAnswer([
@@ -55,7 +55,7 @@ const IpTv = addKeyword(['Ip tv', 'iptv', 'ipt', 'ip', 'tv', 'tvip', 'tv ip', 't
         'Promoción especial: Paga 3 meses por tan solo **Q105**.',
         '',
         'Super Promocion: Paga 6 meses por tan solo **Q180**.'
-    ]);
+    ], null, null, [Payment, Accounts, Bancs]);
 
 const flowRenovacion = addKeyword(['renovacion', 'renovar'])
     .addAnswer([
@@ -64,7 +64,7 @@ const flowRenovacion = addKeyword(['renovacion', 'renovar'])
     .addAnswer([
         'Renovar el mismo',
         'Agregar un servicio'
-    ]);
+    ], null, null, [Payment, Accounts, Bancs, NewService]);
 
 const Error = addKeyword(['error', 'errores', 'problema', 'problemas', 'falla', 'fallas', 'no funciona', 'no sirve', 
     'no puedo', 'no puedo ingresar', 'no puedo acceder', 'no puedo ver'])
@@ -79,7 +79,7 @@ const NewService = addKeyword(['servicio nuevo', 'nuevo servicio', 'agregar serv
         '🎉 ¡Claro! Te puedo ayudar con eso 📱',
         '',
         '¿Qué servicio deseas agregar a tu plan actual? 🤖',
-    ]);
+    ], null, null, [Payment, Accounts, Bancs, Netflix, Disney, ServicesTw, IpTv, ServicesTr]);
 
 const Payment = addKeyword(['pago', 'pagar', 'pagos', 'paguar'])
     .addAnswer([
@@ -90,18 +90,18 @@ const Payment = addKeyword(['pago', 'pagar', 'pagos', 'paguar'])
         'a los numero de cuenta:',
         '1. Ahorro - Banrural - 04103000336503 - Angel García',
         '2. Ahorro - B. Industrial - 1229311 - Angel García',
-    ]);
+    ], null, null, [Accounts, Bancs]);
 
 const Accounts = addKeyword(['cuentas', 'cuenta', 'numero de cuenta', 'numero de cuentas', 'cuentas bancarias', 'cuenta bancaria', 'cuentas de banco', 'cuenta de banco'])
     .addAnswer([
         'Contamos con cuentas en Banrural y Banco Industrial'
-    ]);
+    ], null, null, [Bancs]);
 
 const Bancs = addKeyword(['banco', 'bancos', 'que bancos', 'que banco', 'banco aceptado', 'banco aceptados', 'banco acepta', 'banco aceptan'])
     .addAnswer([
         'Por el momento aceptamos pagos en Banrural y Banco Industrial',
         'pronto agreagaremos mas bancos a nuestra lista de pagos',
-    ]);
+    ], null, null, [Payment, Accounts]);
 
 const flowPrincipal = addKeyword(['hola', 'ola', 'buenas tardes', 'buenos dias', 'buenas noches', 'buenas'])
     .addAnswer([
@@ -113,11 +113,11 @@ const flowPrincipal = addKeyword(['hola', 'ola', 'buenas tardes', 'buenos dias',
         'Servicio Nuevo',
         'Soporte Tecnico',
         ''
-    ], null, null, [flowRenovacion, Netflix, Disney, ServicesTw, IpTv, ServicesTr]);
+    ], null, null, [flowRenovacion, Netflix, Disney, ServicesTw, IpTv, ServicesTr, Payment, Accounts, Bancs]);
 
 const main = async () => {
     const adapterDB = new MockAdapter();
-    const adapterFlow = createFlow([flowPrincipal, Error, NewService]);
+    const adapterFlow = createFlow([flowPrincipal, Error, NewService, flowRenovacion, Netflix, Disney, ServicesTw, IpTv, ServicesTr, Payment, Accounts, Bancs]);
     const adapterProvider = createProvider(BaileysProvider);
 
     createBot({
