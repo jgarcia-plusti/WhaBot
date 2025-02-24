@@ -3,6 +3,27 @@ const QRPortalWeb = require('@bot-whatsapp/portal');
 const BaileysProvider = require('@bot-whatsapp/provider/baileys');
 const MockAdapter = require('@bot-whatsapp/database/mock');
 
+const Payment = addKeyword(['pago', 'pagar', 'pagos', 'paguar'])
+    .addAnswer([
+        'Muchas gracias por confiar en nuestro servicio',
+        '',
+        'Para obtener tu suscripcion, por favor realiza el pago de tu servicio.',
+        'Envianos una foto de tu boleta de pago para poder activar el servicio.',
+        'a los numero de cuenta:',
+        '1. Ahorro - Banrural - 04103000336503 - Angel García',
+        '2. Ahorro - B. Industrial - 1229311 - Angel García',
+    ]);
+
+const Accounts = addKeyword(['cuentas', 'cuenta', 'numero de cuenta', 'numero de cuentas', 'cuentas bancarias', 'cuenta bancaria', 'cuentas de banco', 'cuenta de banco'])
+    .addAnswer([
+        'Contamos con cuentas en Banrural y Banco Industrial'
+    ], null, null, [Payment]);
+
+const Bancs = addKeyword(['banco', 'bancos', 'que bancos', 'que banco', 'banco aceptado', 'banco aceptados', 'banco acepta', 'banco aceptan'])
+    .addAnswer([
+        'Por el momento aceptamos pagos en Banrural y Banco Industrial',
+        'pronto agreagaremos mas bancos a nuestra lista de pagos',
+    ], null, null, [Payment, Accounts]);
 
 const Netflix = addKeyword(['netflix', 'net', 'netfli', 'nesflix'])
     .addAnswer([
@@ -80,28 +101,6 @@ const NewService = addKeyword(['servicio nuevo', 'nuevo servicio', 'agregar serv
         '',
         '¿Qué servicio deseas agregar a tu plan actual? 🤖',
     ], null, null, [Payment, Accounts, Bancs, Netflix, Disney, ServicesTw, IpTv, ServicesTr]);
-
-const Payment = addKeyword(['pago', 'pagar', 'pagos', 'paguar'])
-    .addAnswer([
-        'Muchas gracias por confiar en nuestro servicio',
-        '',
-        'Para obtener tu suscripcion, por favor realiza el pago de tu servicio.',
-        'Envianos una foto de tu boleta de pago para poder activar el servicio.',
-        'a los numero de cuenta:',
-        '1. Ahorro - Banrural - 04103000336503 - Angel García',
-        '2. Ahorro - B. Industrial - 1229311 - Angel García',
-    ], null, null, [Accounts, Bancs]);
-
-const Accounts = addKeyword(['cuentas', 'cuenta', 'numero de cuenta', 'numero de cuentas', 'cuentas bancarias', 'cuenta bancaria', 'cuentas de banco', 'cuenta de banco'])
-    .addAnswer([
-        'Contamos con cuentas en Banrural y Banco Industrial'
-    ], null, null, [Bancs]);
-
-const Bancs = addKeyword(['banco', 'bancos', 'que bancos', 'que banco', 'banco aceptado', 'banco aceptados', 'banco acepta', 'banco aceptan'])
-    .addAnswer([
-        'Por el momento aceptamos pagos en Banrural y Banco Industrial',
-        'pronto agreagaremos mas bancos a nuestra lista de pagos',
-    ], null, null, [Payment, Accounts]);
 
 const flowPrincipal = addKeyword(['hola', 'ola', 'buenas tardes', 'buenos dias', 'buenas noches', 'buenas'])
     .addAnswer([
