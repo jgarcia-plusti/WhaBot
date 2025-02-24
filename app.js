@@ -57,7 +57,6 @@ const ServicesTw = addKeyword(['prime', 'primevideo', 'prime video',
         'Promoción especial: Paga 3 meses por tan solo **Q50**.',
     ], null, null, [Payment, Accounts, Bancs]);
 
-
 const ServicesTr = addKeyword(['spotify', 'spoti', 'spoty', 'spotifai', 'spotyfai', 'spotyfy', 'spotyfy', 'spotyfay', 'spotyfay',
     'youtube music', 'youtubemusic', 'youtubemusik', 'youtubemusica', 'youtubemusica', 'youtubemusik', 'youtubemusik'])
     .addAnswer([
@@ -103,6 +102,13 @@ const Error = addKeyword(['error', 'errores', 'problema', 'problemas', 'falla', 
         'Por favor, indícame cuál es el problema que tienes para poder ayudarte. 🤖',
     ]);
 
+const Adquirir = addKeyword(['adquirir', 'comprar', 'compra', 'adquirir servicio', 'comprar servicio', 'compra servicio', 
+    'adquirir un servicio', 'comprar un servicio', 'compra un servicio'])
+    .addAnswer([
+        '¡Claro! Te puedo ayudar 📱',
+        '',
+        '¿Qué servicio deseas adquirir? 🤖',
+    ], null, null, [Payment, Accounts, Bancs, Netflix, Disney, ServicesTw, IpTv, ServicesTr, Error]);
 
 const flowPrincipal = addKeyword(['hola', 'ola', 'buenas tardes', 'buenos dias', 'buenas noches', 'buenas'])
     .addAnswer([
@@ -114,7 +120,7 @@ const flowPrincipal = addKeyword(['hola', 'ola', 'buenas tardes', 'buenos dias',
         'Servicio Nuevo',
         'Soporte Tecnico',
         ''
-    ], null, null, [flowRenovacion, Netflix, Disney, ServicesTw, IpTv, ServicesTr, Payment, Accounts, Bancs]);
+    ], null, null, [Error, NewService, flowRenovacion, Netflix, Disney, ServicesTw, IpTv, ServicesTr, Payment, Accounts, Bancs]);
 
 const main = async () => {
     const adapterDB = new MockAdapter();
