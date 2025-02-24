@@ -26,7 +26,7 @@ const Disney = addKeyword(['disney', 'dis', 'disney+', 'disneyplus', 'disney plu
 const ServicesTw = addKeyword(['prime', 'primevideo', 'prime video', 
     'paramount', 'paramount +', 'paramountplus', 'paramount plus', 
     'youtube premium', 'youtube premium', 'crunchyroll','crunchy','crunchy roll',
-    'max','hbo','hbomax','hbo max', 'Deezer', 'dezer', 'deser'])
+    'max','hbo','hbomax','hbo max', 'Deezer', 'dezer', 'deser', 'vix', 'vix+', 'vix plus', 'vixplus'])
     .addAnswer([
         '🎉 ¡Claro! Te puedo ayudar con eso 📱'
     ]).addAnswer([
