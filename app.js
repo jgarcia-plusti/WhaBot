@@ -78,6 +78,13 @@ const IpTv = addKeyword(['Ip tv', 'iptv', 'ipt', 'ip', 'tv', 'tvip', 'tv ip', 't
         'Super Promocion: Paga 6 meses por tan solo **Q180**.'
     ], null, null, [Payment, Accounts, Bancs]);
 
+const NewService = addKeyword(['servicio nuevo', 'nuevo servicio', 'agregar servicio', 'servicio adicional', 'servicio extra', 'nuevo'])
+    .addAnswer([
+        '🎉 ¡Claro! Te puedo ayudar con eso 📱',
+        '',
+        '¿Qué servicio deseas agregar a tu plan actual? 🤖',
+    ], null, null, [Payment, Accounts, Bancs, Netflix, Disney, ServicesTw, IpTv, ServicesTr]);
+    
 const flowRenovacion = addKeyword(['renovacion', 'renovar'])
     .addAnswer([
         'Si deseas renovar tu plan actual, solo tienes que enviarnos tu boleta de pago con el valor de tu servicio.'
@@ -95,12 +102,6 @@ const Error = addKeyword(['error', 'errores', 'problema', 'problemas', 'falla', 
         'Por favor, indícame cuál es el problema que tienes para poder ayudarte. 🤖',
     ]);
 
-const NewService = addKeyword(['servicio nuevo', 'nuevo servicio', 'agregar servicio', 'servicio adicional', 'servicio extra', 'nuevo'])
-    .addAnswer([
-        '🎉 ¡Claro! Te puedo ayudar con eso 📱',
-        '',
-        '¿Qué servicio deseas agregar a tu plan actual? 🤖',
-    ], null, null, [Payment, Accounts, Bancs, Netflix, Disney, ServicesTw, IpTv, ServicesTr]);
 
 const flowPrincipal = addKeyword(['hola', 'ola', 'buenas tardes', 'buenos dias', 'buenas noches', 'buenas'])
     .addAnswer([
