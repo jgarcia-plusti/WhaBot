@@ -103,7 +103,7 @@ const Error = addKeyword(['error', 'errores', 'problema', 'problemas', 'falla', 
     ]);
 
 const Adquirir = addKeyword(['adquirir', 'comprar', 'compra', 'adquirir servicio', 'comprar servicio', 'compra servicio', 
-    'adquirir un servicio', 'comprar un servicio', 'compra un servicio'])
+    'adquirir un servicio', 'comprar un servicio', 'compra un servicio', 'quiero adquirir', 'quiero comprar', 'quiero compra'])
     .addAnswer([
         '¡Claro! Te puedo ayudar 📱',
         '',
@@ -120,11 +120,11 @@ const flowPrincipal = addKeyword(['hola', 'ola', 'buenas tardes', 'buenos dias',
         'Servicio Nuevo',
         'Soporte Tecnico',
         ''
-    ], null, null, [Error, NewService, flowRenovacion, Netflix, Disney, ServicesTw, IpTv, ServicesTr, Payment, Accounts, Bancs]);
+    ], null, null, [ Adquirir, Error, NewService, flowRenovacion, Netflix, Disney, ServicesTw, IpTv, ServicesTr, Payment, Accounts, Bancs]);
 
 const main = async () => {
     const adapterDB = new MockAdapter();
-    const adapterFlow = createFlow([flowPrincipal, Error, NewService, flowRenovacion, Netflix, Disney, ServicesTw, IpTv, ServicesTr, Payment, Accounts, Bancs]);
+    const adapterFlow = createFlow([flowPrincipal, Error, Adquirir,NewService, flowRenovacion, Netflix, Disney, ServicesTw, IpTv, ServicesTr, Payment, Accounts, Bancs]);
     const adapterProvider = createProvider(BaileysProvider);
 
     createBot({
