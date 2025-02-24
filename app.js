@@ -3,7 +3,7 @@ const QRPortalWeb = require('@bot-whatsapp/portal');
 const BaileysProvider = require('@bot-whatsapp/provider/baileys');
 const MockAdapter = require('@bot-whatsapp/database/mock');
 
-const Payment = addKeyword(['pago', 'pagar', 'pagos', 'paguar'])
+const Payment = addKeyword(['pago', 'pagar', 'pagos', 'paguar', 'paga', 'pago de servicio', 'pagar servicio', 'pagos de servicio', 'paguar servicio', 'paga servicio'])
     .addAnswer([
         'Muchas gracias por confiar en nuestro servicio',
         '',
