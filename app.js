@@ -7,7 +7,7 @@ const Payment = addKeyword(['pago', 'pagar', 'pagos', 'paguar'])
     .addAnswer([
         'Muchas gracias por confiar en nuestro servicio',
         '',
-        'Para obtener tu suscripcion, por favor realiza el pago de tu servicio.',
+        'Para obtener tu suscripción, por favor realiza el pago de tu servicio.',
         'Envianos una foto de tu boleta de pago para poder activar el servicio.',
         'a los numero de cuenta:',
         '1. Ahorro - Banrural - 04103000336503 - Angel García',
@@ -16,7 +16,8 @@ const Payment = addKeyword(['pago', 'pagar', 'pagos', 'paguar'])
 
 const Accounts = addKeyword(['cuentas', 'cuenta', 'numero de cuenta', 'numero de cuentas', 'cuentas bancarias', 'cuenta bancaria', 'cuentas de banco', 'cuenta de banco'])
     .addAnswer([
-        'Contamos con cuentas en Banrural y Banco Industrial'
+        'Contamos con cuentas en Banrural y Banco Industrial',
+        'Estamos trabajando para agregar mas bancos a nuestra lista de pagos',
     ], null, null, [Payment]);
 
 const Bancs = addKeyword(['banco', 'bancos', 'que bancos', 'que banco', 'banco aceptado', 'banco aceptados', 'banco acepta', 'banco aceptan'])
@@ -84,7 +85,7 @@ const NewService = addKeyword(['servicio nuevo', 'nuevo servicio', 'agregar serv
         '',
         '¿Qué servicio deseas agregar a tu plan actual? 🤖',
     ], null, null, [Payment, Accounts, Bancs, Netflix, Disney, ServicesTw, IpTv, ServicesTr]);
-    
+
 const flowRenovacion = addKeyword(['renovacion', 'renovar'])
     .addAnswer([
         'Si deseas renovar tu plan actual, solo tienes que enviarnos tu boleta de pago con el valor de tu servicio.'
