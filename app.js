@@ -6,7 +6,7 @@ const MockAdapter = require('@bot-whatsapp/database/mock');
 
 const Netflix = addKeyword(['netflix', 'net', 'netfli', 'nesflix'])
     .addAnswer([
-        '🎉 ¡Claro! Te puedo ayudar con eso 📱',
+        '🎉 ¡Claro! Te puedo ayudar con Netflix 📱',
     ]).addAnswer([
         'Estas son las opciones que tengo para ti:',
         'Plan Básico','Tiene un costo de Q35 mensuales para un perfil individual.',
@@ -16,7 +16,7 @@ const Netflix = addKeyword(['netflix', 'net', 'netfli', 'nesflix'])
 
 const Disney = addKeyword(['disney', 'dis', 'disney+', 'disneyplus', 'disney plus', 'disnei'])
     .addAnswer([
-        '🎉 ¡Claro! Te puedo ayudar con eso 📱'
+        '🎉 ¡Claro! Te puedo ayudar con Disney 📱'
     ]).addAnswer([
         'Tiene un costo de Q30 mensuales para un perfil individual.',
         '',
@@ -48,7 +48,7 @@ const ServicesTr = addKeyword(['spotify', 'spoti', 'spoty', 'spotifai', 'spotyfa
 
 const IpTv = addKeyword(['Ip tv', 'iptv', 'ipt', 'ip', 'tv', 'tvip', 'tv ip', 'tv iptv'])
     .addAnswer([
-        '🎉 ¡Claro! Te puedo ayudar con eso 📱'
+        '🎉 ¡Claro! Te puedo ayudar con Ip TV 📱'
     ]).addAnswer([
         'Tiene un costo de Q40 mensuales para un perfil individual.',
         '',
