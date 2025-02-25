@@ -44,7 +44,7 @@ const Bancs = addKeyword(['banco', 'bancos', 'que bancos', 'que banco', 'banco a
         'pronto agreagaremos mas bancos a nuestra lista de pagos',
     ], null, null, [Payment, Accounts, Catalogs]);
 
-const Netflix = addKeyword(['netflix', 'net', 'netfli', 'nesflix'])
+const Netflix = addKeyword(['netflix', 'netfli', 'nesflix'])
     .addAnswer([
         '🎉 ¡Claro! Te puedo ayudar con Netflix 📱',
     ]).addAnswer([
@@ -126,7 +126,7 @@ const flowPrincipal = addKeyword(['hola', 'ola', 'buenas tardes', 'buenos dias',
         'Servicio Nuevo',
         'Soporte Tecnico',
         ''
-    ], null, null, [Catalogs, Adquirir, Error, NewService, flowRenovacion, Netflix, Disney, ServicesTw, IpTv, ServicesTr, Payment, Accounts, Bancs]);
+    ], null, null, [Catalogs, Adquirir, Error, NewService, flowRenovacion, Netflix, Disney, ServicesTw, ServicesTr, Payment, Accounts, Bancs]);
 
 const main = async () => {
     const adapterDB = new MockAdapter();
