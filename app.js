@@ -17,7 +17,6 @@ const Catalogs = addKeyword(['catalogo', 'catalogos', 'catalogo de servicios', '
         '8. Paramount+',
         '9. Deezer',
         '10. Vix',
-        '11. IPTV',
         '',
         '¿En qué más puedo ayudarte? 🤖',
     ]);
@@ -55,7 +54,7 @@ const Netflix = addKeyword(['netflix', 'net', 'netfli', 'nesflix'])
         'Promoción especial: Paga 3 meses por tan solo **Q90**.',
     ], null, null, [Payment, Accounts, Bancs, Catalogs]);
 
-const Disney = addKeyword(['disney', 'dis', 'disney+', 'disneyplus', 'disney plus', 'disnei'])
+const Disney = addKeyword(['disney', 'disney+', 'disneyplus', 'disney plus', 'disnei'])
     .addAnswer([
         '🎉 ¡Claro! Te puedo ayudar con Disney 📱'
     ]).addAnswer([
@@ -76,8 +75,7 @@ const ServicesTw = addKeyword(['prime', 'primevideo', 'prime video',
         'Promoción especial: Paga 3 meses por tan solo **Q50**.',
     ], null, null, [Payment, Accounts, Bancs, Catalogs]);
 
-const ServicesTr = addKeyword(['spotify', 'spoti', 'spoty', 'spotifai', 'spotyfai', 'spotyfy', 'spotyfy', 'spotyfay', 'spotyfay',
-    'youtube music', 'youtubemusic', 'youtubemusik', 'youtubemusica', 'youtubemusica', 'youtubemusik', 'youtubemusik'])
+const ServicesTr = addKeyword(['spotify', 'spoti', 'spoty', 'spotifai', 'spotyfai', 'spotyfy', 'spotyfy', 'spotyfay', 'spotyfay',])
     .addAnswer([
         '🎉 ¡Claro! Te puedo ayudar con eso 📱'
     ]).addAnswer([
@@ -86,23 +84,12 @@ const ServicesTr = addKeyword(['spotify', 'spoti', 'spoty', 'spotifai', 'spotyfa
         'Promoción especial: Paga 3 meses por tan solo **Q105**.',
     ], null, null, [Payment, Accounts, Bancs, Catalogs]);
 
-const IpTv = addKeyword(['Ip tv', 'iptv', 'ipt', 'ip', 'tv', 'tvip', 'tv ip', 'tv iptv'])
-    .addAnswer([
-        '🎉 ¡Claro! Te puedo ayudar con Ip TV 📱'
-    ]).addAnswer([
-        'Tiene un costo de Q40 mensuales para un perfil individual.',
-        '',
-        'Promoción especial: Paga 3 meses por tan solo **Q105**.',
-        '',
-        'Super Promocion: Paga 6 meses por tan solo **Q180**.'
-    ], null, null, [Payment, Accounts, Bancs, Catalogs]);
-
 const NewService = addKeyword(['servicio nuevo', 'nuevo servicio', 'agregar servicio', 'servicio adicional', 'servicio extra', 'nuevo'])
     .addAnswer([
         '🎉 ¡Claro! Te puedo ayudar con eso 📱',
         '',
         '¿Qué servicio deseas agregar a tu plan actual? 🤖',
-    ], null, null, [Payment, Accounts, Bancs, Catalogs, Netflix, Disney, ServicesTw, IpTv, ServicesTr]);
+    ], null, null, [Payment, Accounts, Bancs, Catalogs]);
 
 const flowRenovacion = addKeyword(['renovacion', 'renovar'])
     .addAnswer([
@@ -111,7 +98,7 @@ const flowRenovacion = addKeyword(['renovacion', 'renovar'])
     .addAnswer([
         'Renovar el mismo',
         'Agregar un servicio'
-    ], null, null, [Payment, Accounts, Bancs, Catalogs, NewService]);
+    ], null, null, [Payment, Accounts, Bancs, Catalogs]);
 
 const Error = addKeyword(['error', 'errores', 'problema', 'problemas', 'falla', 'fallas', 'no funciona', 'no sirve', 
     'no puedo', 'no puedo ingresar', 'no puedo acceder', 'no puedo ver'])
@@ -127,7 +114,7 @@ const Adquirir = addKeyword(['adquirir', 'comprar', 'compra', 'adquirir servicio
         '¡Claro! Te puedo ayudar 📱',
         '',
         '¿Qué servicio deseas adquirir? 🤖',
-    ], null, null, [Payment, Accounts, Bancs, Catalogs, Netflix, Disney, ServicesTw, IpTv, ServicesTr, Error]);
+    ], null, null, [Payment, Accounts, Bancs, Catalogs]);
 
 const flowPrincipal = addKeyword(['hola', 'ola', 'buenas tardes', 'buenos dias', 'buenas noches', 'buenas', 'hi', 'hello'])
     .addAnswer([
@@ -143,7 +130,7 @@ const flowPrincipal = addKeyword(['hola', 'ola', 'buenas tardes', 'buenos dias',
 
 const main = async () => {
     const adapterDB = new MockAdapter();
-    const adapterFlow = createFlow([Catalogs, flowPrincipal, Error, Adquirir,NewService, flowRenovacion, Netflix, Disney, ServicesTw, IpTv, ServicesTr, Payment, Accounts, Bancs]);
+    const adapterFlow = createFlow([flowPrincipal, Payment, Accounts, Bancs]);
     const adapterProvider = createProvider(BaileysProvider);
 
     createBot({
