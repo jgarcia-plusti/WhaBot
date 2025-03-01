@@ -27,13 +27,13 @@ const fn =  async() =>{
     });
 }
 
-fn();
+
 const REGEX = /.*/;
 const IaFlow = addKeyword([REGEX], { regex: true })
 .addAction({ capture: true }, async (ctx, { flowDynamic }) => {
     const msgUser = ctx.body;
     console.log(ctx.body);
-    msg.push({ role: "user", content: msgUser });
+    msg= [{ role: "user", content: initialPromt + msgUser }];
     
     response = await openai.chat.completions.create({
         model: 'deepseek-chat',
