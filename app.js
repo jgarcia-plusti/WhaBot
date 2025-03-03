@@ -20,7 +20,7 @@ const initialPrompt = "Eres un asistente virtual que ayuda a los clientes a eleg
                       "Usa un tono amigable y cercano, como si estuvieras hablando directamente con el cliente. " +
                       "Evita respuestas demasiado estructuradas o que parezcan un listado. En su lugar, sé natural y conversacional.";
 
-msg = [{ role: "user", content: initialPromt }];
+msg = [{ role: "user", content: initialPrompt }];
 const fn =  async() =>{
     response = await openai.chat.completions.create({
         model: 'deepseek-chat',
@@ -34,7 +34,7 @@ const IaFlow = addKeyword([REGEX], { regex: true })
 .addAction({ capture: true }, async (ctx, { flowDynamic }) => {
     const msgUser = ctx.body;
     console.log(ctx.body);
-    msg= [{ role: "user", content: initialPromt + msgUser }];
+    msg= [{ role: "user", content: initialPrompt + msgUser }];
     
     response = await openai.chat.completions.create({
         model: 'deepseek-chat',
